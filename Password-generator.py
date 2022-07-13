@@ -5,6 +5,7 @@
 import hashlib
 import random
 import pandas as pd
+import datetime as dt
 
 def generate_password(password, num):
     pwd_list = []
@@ -15,7 +16,7 @@ def generate_password(password, num):
         print("Secure Password ", i, " : ", cut_pwd)
     dict = {"Secure Passwords" : pwd_list}
     df = pd.DataFrame(dict)
-    df.to_csv('Secure_passwords.csv')
+    df.to_csv('Secure_passwords{}.csv'.format(dt.datetime.now().strftime("%Y-%m-%d %H%M%S"),index=False))
     print("Secure_passwords.csv : exported successfully !")
 
 def generate_more(choice):
@@ -31,7 +32,7 @@ def main():
         try:
             num = int(input("Enter how many passwords to generate: "))
             generate_password(password, num+1)
-            generate_more(input("Generate more passwords? (y/n) \n"))
+            generate_more(input("Generate more passwords? (y) \n"))
             FALSE
         except ValueError:
             print("Please enter a valid number.")
