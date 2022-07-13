@@ -17,14 +17,18 @@ def generate_more(choice):
         main()
     else:
         print("Exiting")
-        exit
+        exit()
 
 def main():
     password = input('Enter your simple password: ')
-    num = int(input("Enter how many passwords to generate: "))
-    generate_password(password, num+1)
-    generate_more(input("Generate more passwords? (y) "))
-
+    while True:
+        try:
+            num = int(input("Enter how many passwords to generate: "))
+            generate_password(password, num+1)
+            generate_more(input("Generate more passwords? (y) \n"))
+            FALSE
+        except ValueError:
+            print("Please enter a valid number.")
 
 if __name__ == '__main__':
     main()
